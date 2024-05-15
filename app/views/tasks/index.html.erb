@@ -1,0 +1,28 @@
+<h1 class="my-4">Tasks List</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Details</th>
+      <th>Completed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= link_to task.title, task_path(task), class: "text-decoration-none" %></td>
+        <td><%= task.details %></td>
+        <td>
+          <% if task.completed %>
+            <i class="fas fa-check-square text-success"></i>
+          <% else %>
+            <i class="far fa-square text-muted"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add a New Task', new_task_path, class: "btn btn-primary" %>
